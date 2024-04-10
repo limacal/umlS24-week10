@@ -16,7 +16,7 @@ podTemplate(yaml: '''
           mountPath: /var/secrets/google
         env:
         - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/umls24-418119-e57e00d7513d.json        
+          value: /Users/jenkins/agent/week10-419916-a2d1454eca6b.json        
       restartPolicy: Never
       volumes:
       - name: shared-storage
@@ -35,7 +35,7 @@ podTemplate(yaml: '''
           kubectl get ns
           echo $GOOGLE_APPLICATION_CREDENTIALS
           gcloud auth login --cred-file=$GOOGLE_APPLICATION_CREDENTIALS --no-launch-browser
-          gcloud container clusters get-credentials hello-cluster --region us-central1 --project umls24-418119 
+          gcloud container clusters get-credentials hello-cluster --region us-central1 --project week10-419916
           echo 'namespaces in the prod environment'
           kubectl get ns
           '''
