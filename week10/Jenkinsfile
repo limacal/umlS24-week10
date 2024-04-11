@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        //stage('Deploy Staging Environment') {
+        //    steps {
+        //        script {
+        //            // Deploy services in staging namespace
+        //            sh 'kubectl apply -f calculator.yaml -n staging --validate=false'
+        //            sh 'kubectl apply -f caching-service.yaml -n staging --validate=false'
+        //        }
+        //    }
+        //}
+        
+        stage('Checkout') {
+            steps {
+                // Checkout code from GitHub repository
+                //git 'https://github.com/your/repository.git'
+                git 'https://github.com/limacal/umlS24-week10.git'
+            }
+        }
+
+        stage('Deploy to Staging') {
+            steps {
+                // Apply changes to staging environment using kubectl apply
+                //sh 'kubectl apply -f calculator.yaml -f caching-service.yaml -n staging'
+                sh 'kubectl apply -f calculator.yaml -n staging --validate=false'
+                sh 'kubectl apply -f caching-service.yaml -n staging --validate=false'
+            }
+        }
+        
+    }
+}
